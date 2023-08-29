@@ -9,7 +9,8 @@ scoreboard objectives add rpghp trigger
 
 # player exp
 # tracks player hearts
-scoreboard objectives add rpghp.hp health
+#scoreboard objectives add rpghp.hp health
+scoreboard objectives add rpghp.hp dummy
 scoreboard objectives add rpghp.hptrack dummy
 scoreboard objectives add rpghp.hptrack2 dummy
 scoreboard objectives add rpghp.hpset dummy

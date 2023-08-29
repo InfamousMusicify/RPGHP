@@ -4,7 +4,7 @@
 # attribute @s minecraft:generic.max_health base set 1024
 
 schedule function rpghp:tick 1s
-
+execute as @a store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
 # Main Functions
 # login redundancies
 execute as @a[scores={rpghp_log=1..}] run function rpghp:login
@@ -13,7 +13,8 @@ execute as @a[scores={rpghp_log=1..}] run function rpghp:login
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
 execute as @a[scores={rpghp.hpset=1..}] run function rpghp:set_health
 
-
+#execute as @a[scores={rpghp.hptrack=1..}] run function rpghp:reset_health
+execute as @a[scores={rpghp.hptrack=1..}] unless score @s rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
 
 # store base health to tracker   -must move out of tick might be able to move this out of tick into respawn and or killing adv stuff
 #execute as @a store result score @s rpghp.hptrack run attribute @s minecraft:generic.max_health base get
