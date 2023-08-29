@@ -7,7 +7,9 @@ scoreboard players operation @s rpghp.xptrack = @s rpghp.xp
 # add 1 to health if xp is over current levels needed amount
 execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players add @s rpghp.hptrack 1
 # if score is less than zero, revert 1 level, unless at level 1
-execute if score @s rpghp.xp matches ..-1 unless score @s rpghp.hp matches 1 run function rpghp:revert_lvl
+#execute if score @s rpghp.xp matches ..-1 unless score @s rpghp.hp matches 1 run function rpghp:revert_lvl
+execute if score @s rpghp.xptrack matches ..-1 unless score @s rpghp.hp matches 1 run scoreboard players remove @s rpghp.hptrack 1
+#execute if score @s rpghp.xptrack matches ..-1 unless score @s rpghp.hp matches 1 run say revert
 
 # store arb health score for math
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
@@ -20,6 +22,12 @@ execute store result score @s rpghp.xpmult run scoreboard players operation @s r
 
 # store new xp value after math
 scoreboard players operation @s rpghp.xp = @s rpghp.xptrack
+
+# finish level revert, subtract neg points from new mult.
+execute if score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xpmult
+execute if score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xp = @s rpghp.xptrack
+#scoreboard players operation @s rpghp.xptrack = @s rpghp.xpmult
+#scoreboard players operation @s rpghp.xptrack += @s rpghp.xp
 
 
 ###

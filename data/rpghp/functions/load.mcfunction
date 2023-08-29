@@ -30,6 +30,7 @@ execute unless score #xpmult rpghp.config matches 0.. run scoreboard players set
 # xp-percentage-from-mobspawners: 20  ?what does this mean?
 # xp-lost-on-death: 20
 execute unless score #death rpghp.config matches 0.. unless score #death rpghp.config matches ..0 run scoreboard players set #death rpghp.config -20
+execute unless score #player rpghp.config matches 0.. unless score #player rpghp.config matches ..0 run scoreboard players set #player rpghp.config 0
 # xpmessages: true
 execute unless score #rpghp.msg rpghp.config matches 0.. run scoreboard players set #rpghp.msg rpghp.config 0
 # xpmessages-time: 40  ?what is this?

@@ -51,7 +51,6 @@ execute unless score #mule rpghp.config matches 0.. unless score #mule rpghp.con
 # o
 execute unless score #ocelot rpghp.config matches 0.. unless score #ocelot rpghp.config matches ..0 run scoreboard players set #ocelot rpghp.config 2
 # P
-execute unless score #player rpghp.config matches 0.. unless score #player rpghp.config matches ..0 run scoreboard players set #player rpghp.config 0
 execute unless score #parrot rpghp.config matches 0.. unless score #parrot rpghp.config matches ..0 run scoreboard players set #parrot rpghp.config 5
 execute unless score #panda rpghp.config matches 0.. unless score #panda rpghp.config matches ..0 run scoreboard players set #panda rpghp.config 5
 execute unless score #pig rpghp.config matches 0.. unless score #pig rpghp.config matches ..0 run scoreboard players set #pig rpghp.config 1
