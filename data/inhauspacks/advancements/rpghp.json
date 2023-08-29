@@ -1,0 +1,22 @@
+{
+    "display": {
+        "title": "Usage                                                                                       ",
+        "description": ["",
+        {"text":"/trigger rpghp","color":"green"},{"text":"\n"},
+        {"text":"check stats and toggle rpghp","color":"gold"},{"text":"\n"},
+        {"text":"xx","color":"yellow"},{"text":"\n"},
+        {"text":"xx","color":"yellow"}
+    ],
+    "icon": {
+        "item": "minecraft:poppy"
+    },
+    "announce_to_chat": false,
+    "show_toast": false
+    },
+    "parent": "inhauspacks:rpghp_pack",
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}
