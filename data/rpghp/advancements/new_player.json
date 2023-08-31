@@ -5,6 +5,6 @@
         }
     },
     "rewards": {
-        "function": "chainsplus:new_player"
+        "function": "rpghp:new_player"
     }
 }

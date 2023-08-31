@@ -3,7 +3,7 @@
 # give player exp from killing, unless at max health
 execute unless score #tadpole rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xp += #tadpole rpghp.config
 # negative
-execute if score #tadpole rpghp.config matches ..-1 run scoreboard players operation @s rpghp.xp += #tadpole rpghp.config
+execute if score #tadpole rpghp.config matches ..-1 unless score @s rpghp.xpcount matches ..0 run scoreboard players operation @s rpghp.xp += #tadpole rpghp.config
 # xp_math - health
 execute unless score #tadpole rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run function rpghp:xp_math
 # neg

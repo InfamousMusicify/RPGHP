@@ -3,7 +3,7 @@
 # give player exp from killing, unless at max health
 execute unless score #llama rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xp += #llama rpghp.config
 # negative
-execute if score #llama rpghp.config matches ..-1 run scoreboard players operation @s rpghp.xp += #llama rpghp.config
+execute if score #llama rpghp.config matches ..-1 unless score @s rpghp.xpcount matches ..0 run scoreboard players operation @s rpghp.xp += #llama rpghp.config
 # xp_math - health
 execute unless score #llama rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run function rpghp:xp_math
 # neg

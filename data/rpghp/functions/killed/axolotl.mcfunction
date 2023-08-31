@@ -3,7 +3,7 @@
 # give player exp from killing, unless at max health
 execute unless score #axolotl rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xp += #axolotl rpghp.config
 # negatives
-execute if score #axolotl rpghp.config matches ..-1 run scoreboard players operation @s rpghp.xp += #axolotl rpghp.config
+execute if score #axolotl rpghp.config matches ..-1 unless score @s rpghp.xpcount matches ..0 run scoreboard players operation @s rpghp.xp += #axolotl rpghp.config
 # xp_math - health
 execute unless score #axolotl rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run function rpghp:xp_math
 execute if score #axolotl rpghp.config matches ..-1 run function rpghp:xp_math

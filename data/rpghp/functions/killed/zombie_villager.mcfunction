@@ -3,7 +3,7 @@
 # give player exp from killing, unless at max health
 execute unless score #zombie_villager rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xp += #zombie_villager rpghp.config
 # negative
-execute if score #zombie_villager rpghp.config matches ..-1 run scoreboard players operation @s rpghp.xp += #zombie_villager rpghp.config
+execute if score #zombie_villager rpghp.config matches ..-1 unless score @s rpghp.xpcount matches ..0 run scoreboard players operation @s rpghp.xp += #zombie_villager rpghp.config
 # xp_math - health
 execute unless score #zombie_villager rpghp.config matches ..-1 if score @s rpghp.hptrack < #max_hp rpghp.config run function rpghp:xp_math
 # neg
