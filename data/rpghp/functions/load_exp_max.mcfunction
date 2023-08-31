@@ -1,6 +1,11 @@
 # load_exp
-# intial exp math to store to new players.
+# intial exp math to store max exp to admin storage and or new players.
 
+
+
+
+
+#####     Max EXP
 # reset max exp for 2nd and 3rd calcs. recalc redundancy
 execute if score #exp_mathed rpghp.config matches 1.. run scoreboard players reset #max_exp rpghp.config
 execute if score #exp_mathed rpghp.config matches 1.. run scoreboard players reset #exp_mathed rpghp.config
@@ -16,13 +21,13 @@ scoreboard players operation #i_math rpghp.config *= #xpmult rpghp.config
 scoreboard players operation #max_exp rpghp.config += #i_math rpghp.config
 
 # loop function if variable is not at max hp yet
-execute unless score #i rpghp.config >= #max_hp rpghp.config run function rpghp:load_exp
+execute unless score #i rpghp.config >= #max_hp rpghp.config run function rpghp:load_exp_max
 # start to reset exp max, for second and third calcs.
 execute if score #i rpghp.config >= #max_hp rpghp.config run scoreboard players add #exp_mathed rpghp.config 1
 # kill variable after math is done
 execute if score #i rpghp.config >= #max_hp rpghp.config run scoreboard players reset #i rpghp.config
+#####     Max EXP Ends
 
 
 
-# old
-#execute if score #i rpghp.config >= #max_hp rpghp.config run scoreboard players reset #max_exp rpghp.config
+

@@ -47,7 +47,8 @@ execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard playe
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20
 
 function rpghp:load_mobs
-function rpghp:load_exp
+function rpghp:load_exp_max
+function rpghp:load_exp_base
 
 scoreboard players set #zero rpghp.config 0
 scoreboard players set #neg1 rpghp.config -1
