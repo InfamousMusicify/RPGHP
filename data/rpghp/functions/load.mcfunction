@@ -5,12 +5,22 @@
 scoreboard objectives add rpghp.config dummy
 scoreboard objectives add rpghp_log minecraft.custom:minecraft.leave_game
 scoreboard objectives add rpghp.respawn minecraft.custom:minecraft.time_since_death
+# trigger
 scoreboard objectives add rpghp trigger
+scoreboard objectives add rpghp.rpghp dummy
+scoreboard objectives add rpghp.hpmod dummy
+scoreboard objectives add rpghp.hpchoose dummy
+scoreboard objectives add rpghp.respheal dummy
+scoreboard objectives add rpghp.logheal dummy
+#
 
 # player exp
 # tracks player hearts
 #scoreboard objectives add rpghp.hp health
 scoreboard objectives add rpghp.hp dummy
+scoreboard objectives add rpghp.hplvl health
+scoreboard objectives add rpghp.hplvltrack dummy
+
 scoreboard objectives add rpghp.hptrack dummy
 scoreboard objectives add rpghp.hptrack2 dummy
 scoreboard objectives add rpghp.hpset dummy
@@ -54,13 +64,47 @@ scoreboard players set #zero rpghp.config 0
 scoreboard players set #neg1 rpghp.config -1
 
 schedule clear function rpghp:tick
-schedule clear function rpghp:tick_exp_checker
-
+schedule clear function rpghp:tick_10s
+# none constants -add toggle for admin in front of this
+execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
+execute unless score #exp_checker rpghp.config matches 1.. run schedule function rpghp:tick_10s 10s
 
 
 ##### Notes:
 # trigger
 # rpghp = regen
+
+
+# # Most recent debates
+# is exp checker vs level check tick needed?  
+
+
+# # admin toggles
+# pieces of the pack on and off
+# done -respawn healing
+# done -login healing
+# -
+
+# # admin things
+# player permission nodes 
+# -rpghp 
+# -health_mod 
+# -resp_heal 
+# -log_heal 
+# -health_choose -admin toggle for trigger for rpg servers and custom gamemodes
+# -presets
+# -
+
+
+# # player choice?
+# turn off health modify with a toggle cmd -unless admin turns on RP toggle? for servers or worlds with a specific mechanic or preset. un-turn-offable
+
+# toggle login healing
+# toggle respawn healing
+
+# choose health level under earned level?  - this could add a painful layer of complex to the codebase.
+# if you do this, please make sure to decide very thouroughly whether or not to use exp checker, as having checker running alongside this could add some pain.
+
 
 # TODO:
 # player choice:

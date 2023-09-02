@@ -42,6 +42,7 @@ execute unless score #hoglin rpghp.config matches 0.. unless score #hoglin rpghp
 execute unless score #husk rpghp.config matches 0.. unless score #husk rpghp.config matches ..0 run scoreboard players set #husk rpghp.config 3
 # I
 execute unless score #iron_golem rpghp.config matches 0.. unless score #iron_golem rpghp.config matches ..0 run scoreboard players set #iron_golem rpghp.config 13
+execute unless score #illusioner rpghp.config matches 0.. unless score #illusioner rpghp.config matches ..0 run scoreboard players set #illusioner rpghp.config 20
 # L
 execute unless score #llama rpghp.config matches 0.. unless score #llama rpghp.config matches ..0 run scoreboard players set #llama rpghp.config 5
 # M

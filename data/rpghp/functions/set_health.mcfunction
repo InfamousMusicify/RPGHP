@@ -12,6 +12,7 @@ effect give @s minecraft:instant_health 1 252
 
 # reset xp to zero when forcibly leveled
 scoreboard players set @s rpghp.xp 0
+scoreboard players set @s rpghp.xptrack 0
 # exp recalc points needed for current level
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 

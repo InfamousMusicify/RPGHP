@@ -1,7 +1,7 @@
 # chain:uninstall
 
 schedule clear function rpghp:tick
-schedule clear function rpghp:tick_exp_checker
+schedule clear function rpghp:tick_10s
 
 
 

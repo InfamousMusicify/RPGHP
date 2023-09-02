@@ -4,10 +4,16 @@
 # attribute @s minecraft:generic.max_health base set 1024
 
 schedule function rpghp:tick 1s
+# store current base health (max hp)
 execute as @a store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
+
+
 # Main Functions
 # login redundancies
 execute as @a[scores={rpghp_log=1..}] run function rpghp:login
+# store current hp (actual hp)
+scoreboard players operation @s rpghp.hplvltrack = @s rpghp.hplvl
+#execute as @a store result score @s rpghp.hplvltrack run 
 
 # admin set player health
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset

@@ -6,6 +6,51 @@
 # do not reset players over max hp
 
 # this is intended as a bugfix for people who have lower base health then they shud.
+# or a feature if you look at it another way, this ensures people have the health they earned thru exp.
+
+
+# store base health score to tracker for maths
+scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+
+scoreboard players operation #player_hp rpghp.config = @s rpghp.xpcount
+
+# change
+execute unless score #p rpghp.config >= #start_hp rpghp.config run scoreboard players add #p rpghp.config 1
+
+
+
+
+
+
+
+# change arbitrary storages.
+##### ##### ##### ##### ##### ##### ##### ##### ##### 
+
+
+
+# reset max exp for 2nd and 3rd calcs. recalc redundancy
+execute if score #exp_mathp rpghp.config matches 1.. run scoreboard players reset #earned_exp rpghp.config
+execute if score #exp_mathp rpghp.config matches 1.. run scoreboard players reset #exp_mathp rpghp.config
+
+# add 1 to variable unless start_hp reached
+execute unless score #p rpghp.config >= #start_hp rpghp.config run scoreboard players add #p rpghp.config 1
+
+# store variable for multiplication
+scoreboard players operation #p_math rpghp.config = #p rpghp.config
+# multiply variable 
+scoreboard players operation #p_math rpghp.config *= #xpmult rpghp.config
+# store result
+scoreboard players operation #earned_exp rpghp.config += #p_math rpghp.config
+
+# loop function if variable is not at max hp yet
+execute unless score #p rpghp.config >= #start_hp rpghp.config run function rpghp:exp_checker
+##### ##### ##### ##### ##### ##### ##### ##### ##### 
+
+# start to reset exp max, for second and third calcs, recalc redundancy
+execute if score #p rpghp.config >= #start_hp rpghp.config run scoreboard players add #exp_mathp rpghp.config 1
+# kill variable after math is done
+execute if score #p rpghp.config >= #start_hp rpghp.config run scoreboard players reset #p rpghp.config
+
 
 
 # change arbitrary storages.

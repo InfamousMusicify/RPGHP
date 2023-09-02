@@ -21,7 +21,7 @@ scoreboard players set @s rpghp.xp 0
 # add 1 to health if xp is over current levels needed amount
 execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players add @s rpghp.hptrack 1
 # negative - if score is less than zero, revert 1 level, unless at level 1, unless at or below lowest hp
-execute unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 unless score @s rpghp.hp matches 1 run scoreboard players remove @s rpghp.hptrack 1
+execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players remove @s rpghp.hptrack 1
 
 # subtract mult from gained exp, if gained exp is greater than needed
 execute if score @s rpghp.xptrack >= @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack -= @s rpghp.xpmult
@@ -30,9 +30,12 @@ scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 
 # finish level revert, subtract neg points from new mult.
-execute if score @s rpghp.xptrack matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xpmult
+execute unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xpmult
+# negative -reset xptrack, if at or below lowest health
+execute if score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players set @s rpghp.xptrack 0
 
-# fix negative score
+
+# fix negative score -full exp counter
 execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
 
 ##### ##### ##### ##### ##### ##### ##### ##### ##### 
@@ -41,6 +44,8 @@ function rpghp:health_array
 
 # redundancy loop for getting multiple levels of exp at once
 execute if score @s rpghp.xptrack > @s rpghp.xpmult run function rpghp:xp_math
+# negative -loop loss level
+execute if score @s rpghp.xptrack matches ..-1 run function rpghp:xp_math
 ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
 

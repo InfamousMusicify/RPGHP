@@ -13,7 +13,7 @@ execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
 #function rpghp:health_array
 
 #effect give @s minecraft:instant_health 1 252
-execute unless score #respawn_heal rpghp.config matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252
+execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252
 
 
 
