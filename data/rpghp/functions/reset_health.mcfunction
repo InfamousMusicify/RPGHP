@@ -1,5 +1,5 @@
 # reset_health
-say resethp
+#say resethp
 
 
 

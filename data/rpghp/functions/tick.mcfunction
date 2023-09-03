@@ -9,26 +9,24 @@ execute as @a store result score @s rpghp.hp run attribute @s minecraft:generic.
 #execute as @a if score @s rpghp.hptrack > @s rpghp.hp store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
 
 
-#Port to chains -store current hp (actual hp), if hp is higher than tracker
-#execute unless score @s rpghp.hplvltrack < @s rpghp.hplvl run scoreboard players operation @s rpghp.hplvltrack = @s rpghp.hplvl
-
 # Main Functions
 # login redundancies
 execute as @a[scores={rpghp_log=1..}] run function rpghp:login
 
-#execute as @a store result score @s rpghp.hplvltrack run 
 
 # admin set player health
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
-####broken fix later# execute as @a[scores={rpghp.hpset=1..}] run function rpghp:set_health
+execute as @a[scores={rpghp.hpset=1..}] run function rpghp:set_health
 
 
 
 
-# reset players health if it somehow drifts.  
+# reset players health if it somehow drifts.  (death and other things can reset your hp, this is a redundancy)
 #execute as @a[scores={rpghp.hptrack=1..}] run function rpghp:reset_health
 #execute as @a[scores={rpghp.hptrack=1..}] unless score @s rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
-execute as @a unless score @s[scores={rpghp.respawn=21..}] rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
+#execute as @a unless score @s[scores={rpghp.respawn=21..}] rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
+execute as @a[scores={rpghp.respawn=21..}] unless score @s rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
+
 
 # death
 execute as @a[scores={rpghp.respawn=1..20}] run function rpghp:respawn

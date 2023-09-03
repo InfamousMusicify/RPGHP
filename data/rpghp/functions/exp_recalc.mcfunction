@@ -1,4 +1,4 @@
-# exp_checker
+# exp_recalc
 
 
 
@@ -26,7 +26,7 @@ execute unless score #p rpghp.config >= #start_hp rpghp.config run scoreboard pl
 ########## Basic mod, source material for maths  
 ##### -this math may be sort of the reverse of what i need, i need to count how much exp a player has earned and then calc a level based off the full count.
 ### This as it is could be useful for a exp wipe and level recalc based off of current max HP, more of HPreset sort of thing except its serverwide admin choice that resets and overrides you xp count and hp level utterly.
-# not really sure if thats needed but... there it is if you want it, id made another func with a new name and stored this logic
+# not really sure if thats needed but... there it is if you want it... this is the new func to store it until i end up using it
 
 # reset max exp for 2nd and 3rd calcs. recalc redundancy
 execute if score @s rpghp.exp_math matches 1.. run scoreboard players reset @s rpghp.earned_exp

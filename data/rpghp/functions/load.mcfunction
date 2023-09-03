@@ -17,17 +17,23 @@ scoreboard objectives add rpghp.logheal dummy
 # player exp
 # tracks player hearts
 #scoreboard objectives add rpghp.hp health
+# main hp
 scoreboard objectives add rpghp.hp dummy
-scoreboard objectives add rpghp.hplvl health
-scoreboard objectives add rpghp.hplvltrack dummy
-
+# secondary hp
 scoreboard objectives add rpghp.hptrack dummy
+# maths hp (used to calc xpmult)
 scoreboard objectives add rpghp.hptrack2 dummy
+# admin set hp (gives instant hp)
 scoreboard objectives add rpghp.hpset dummy
+##### # actual hp (for login healing loop, which was cut. move to chains!)
+##### scoreboard objectives add rpghp.hplvl health
+##### # base hp tracker for math
+##### scoreboard objectives add rpghp.hplvltrack dummy
+
 # subtract these number each time a player gets exp or looses exp.
 # tracks exp points
 scoreboard objectives add rpghp.xp dummy
-# spare trcker for maths
+# per level tracker
 scoreboard objectives add rpghp.xptrack dummy
 # full xp counter
 scoreboard objectives add rpghp.xpcount dummy
@@ -42,11 +48,11 @@ execute unless score #start_hp rpghp.config matches 0.. run scoreboard players s
 execute unless score #lowest_hp rpghp.config matches 0.. run scoreboard players set #lowest_hp rpghp.config 20
 # needed-xp-is-hp-multiplied-by: 20
 execute unless score #xpmult rpghp.config matches 0.. run scoreboard players set #xpmult rpghp.config 20
-# xp-percentage-from-mobspawners: 20  ?what does this mean?
+# xp-percentage-from-mobspawners: 20  ?how does one even implement this?
 # xp-lost-on-death: 20
 execute unless score #death rpghp.config matches 0.. unless score #death rpghp.config matches ..0 run scoreboard players set #death rpghp.config -20
 execute unless score #player rpghp.config matches 0.. unless score #player rpghp.config matches ..0 run scoreboard players set #player rpghp.config 0
-# xpmessages: true
+# xpmessages: true  -might not do this becuase just why....
 execute unless score #rpghp.msg rpghp.config matches 0.. run scoreboard players set #rpghp.msg rpghp.config 0
 # xpmessages-time: 40  ?what is this?
 
@@ -92,7 +98,6 @@ execute unless score #exp_checker rpghp.config matches 1.. run schedule function
 # -rpghp 
 # -health_mod 
 # -resp_heal 
-####Removed because this was a cvhains bug not attrs# -log_heal 
 # -health_choose -admin toggle for trigger for rpg servers and custom gamemodes
 # -presets
 # -

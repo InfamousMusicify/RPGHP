@@ -11,3 +11,15 @@ execute as @a unless score @s rpghp.hplvltrack < @s rpghp.hplvl run scoreboard p
 # loop if hp still under logout score
 #execute unless score @s rpghp.hplvltrack < @s rpghp.hplvl run function rpghp:login_heal
 execute as @a if score @s rpghp.hplvltrack < @s rpghp.hplvl run schedule function rpghp:login_heal 1t
+
+
+# tick
+#Port to chains -store current hp (actual hp), if hp is higher than tracker
+execute unless score @s rpghp.hplvltrack < @s rpghp.hplvl run scoreboard players operation @s rpghp.hplvltrack = @s rpghp.hplvl
+
+# login
+###works but did mojang friggin fix this...?#off# 
+execute unless score @s rpghp.hplvltrack < @s rpghp.hplvl run function rpghp:login_heal
+
+
+####Removed because this was a cvhains bug not attrs# -log_heal 

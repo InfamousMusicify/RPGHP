@@ -1,5 +1,5 @@
 # set_health
-say sethp
+#say sethp
 
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
 scoreboard players set @s[scores={rpghp.hpset=1025..}] rpghp.hpset 1024
@@ -20,4 +20,4 @@ execute store result score @s rpghp.xpmult run scoreboard players operation @s r
 
 
 
-scoreboard players reset @s rpghp.hpset
+scoreboard players set @s rpghp.hpset 0

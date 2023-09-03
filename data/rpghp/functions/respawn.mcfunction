@@ -1,5 +1,5 @@
 # respawn
-say resp
+#say resp
 #
 
 

@@ -1030,4 +1030,4 @@ execute as @s[scores={rpghp.hptrack=1024..}] run attribute @s minecraft:generic.
 #attribute @s minecraft:generic.max_health base set 1024
 
 
-say health array
+#say health array
