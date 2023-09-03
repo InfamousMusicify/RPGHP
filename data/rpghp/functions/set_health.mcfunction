@@ -1,14 +1,16 @@
 # set_health
-
+say sethp
 
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
 scoreboard players set @s[scores={rpghp.hpset=1025..}] rpghp.hpset 1024
+
+scoreboard players operation @s rpghp.hp = @s rpghp.hpset
 scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
-scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
+scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hpset
 #execute unless score @s rpghp.hptrack matches 20 run function rpghp:health_array
 function rpghp:health_array
 #execute unless score #rpghp_rsp_heal rpghp.config matches 1.. as @s[scores={rpghp.hp=21..}] run effect give @s minecraft:instant_health 1 252
-effect give @s minecraft:instant_health 1 252
+effect give @s minecraft:instant_health 1 252 true
 
 # reset xp to zero when forcibly leveled
 scoreboard players set @s rpghp.xp 0

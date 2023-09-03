@@ -51,7 +51,7 @@ execute unless score #rpghp.msg rpghp.config matches 0.. run scoreboard players 
 # xpmessages-time: 40  ?what is this?
 
 # login heal toggle -bug fix for larger amounts of health
-execute unless score #login_heal rpghp.config matches 0.. run scoreboard players set #login_heal rpghp.config 0
+#execute unless score #login_heal rpghp.config matches 0.. run scoreboard players set #login_heal rpghp.config 0
 execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard players set #respawn_heal rpghp.config 0
 # this doesnt need to be done, this is a tracker for player exp
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20
@@ -76,6 +76,8 @@ execute unless score #exp_checker rpghp.config matches 1.. run schedule function
 
 
 # # Most recent debates
+##### Port login healing to chains because thats the one that needs the bug fix.  apperently attribute modifiers just dont have this bug
+
 # is exp checker vs level check tick needed?  
 
 
@@ -90,7 +92,7 @@ execute unless score #exp_checker rpghp.config matches 1.. run schedule function
 # -rpghp 
 # -health_mod 
 # -resp_heal 
-# -log_heal 
+####Removed because this was a cvhains bug not attrs# -log_heal 
 # -health_choose -admin toggle for trigger for rpg servers and custom gamemodes
 # -presets
 # -

@@ -1,24 +1,31 @@
 # respawn
-
+say resp
 #
 
 
 # give exp
 scoreboard players operation @s rpghp.xp += #death rpghp.config
 # do math
-execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
+##### execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
+execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math_death
+
+execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252 true
+
+
+
+
+
+
+
+
+
 
 # do health array - gives player new health amount
 #execute unless score @s rpghp.hptrack matches 20 run function rpghp:health_array
 #function rpghp:health_array
 
 #effect give @s minecraft:instant_health 1 252
-execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252
-
-
-
-
-
+#execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252 true
 
 
 
