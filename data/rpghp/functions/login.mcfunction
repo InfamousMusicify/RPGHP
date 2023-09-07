@@ -13,13 +13,13 @@
 
 # login healing, unless admin off, unless player off, if score 21 and over
 #execute unless score #login_heal rpghp.config matches 1.. unless score @s rpghp.logheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252 true
-scoreboard players add @s rpghp.hptrack 0
+#scoreboard players add @s rpghp.hptrack 0
 
 
 
 
 # starting XP
-execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
+#execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
 
 scoreboard players enable @s rpghp
 

@@ -40,6 +40,8 @@ execute as @a[scores={rpghp.respawn=1..20}] run function rpghp:respawn
 #execute as @a if score @s rpghp.xp > @s rpghp.xpmult run function rpghp:xp_math
 
 
+# check exp vs level and recalc
+#execute unless score #exp_checker rpghp.config matches 1.. as @a[scores={rpghp.xpcount=1..}] run function rpghp:exp_checker
 
 #execute as @a[scores={rpghp.health=0,rpghp.count=1..}] unless score @s rpghp.config matches 3 run function rpghp:regen
 

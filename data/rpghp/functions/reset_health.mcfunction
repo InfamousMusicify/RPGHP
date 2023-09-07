@@ -1,5 +1,6 @@
 # reset_health
 #say resethp
+# used after respawn and in various other edge cases to ensure health is consistent
 
 
 
@@ -21,16 +22,27 @@
 ##### execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 
 ###
+scoreboard players set @s[scores={rpghp.hptrack=1025..}] rpghp.hptrack 1024
 
 
-execute if score @s rpghp.hptrack < @s rpghp.hp run scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
-execute if score @s rpghp.hptrack > @s rpghp.hp run scoreboard players operation @s rpghp.hp = @s rpghp.hptrack
-##### scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
-##### scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hp
+scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+#scoreboard players operation @s rpghp.hp = @s rpghp.hptrack
+####redone# execute if score @s rpghp.hptrack < @s rpghp.hp run scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+####redone# execute if score @s rpghp.hptrack > @s rpghp.hp run scoreboard players operation @s rpghp.hp = @s rpghp.hptrack
+####OG# scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+####OG# scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hp
 
-function rpghp:health_array
+
+#function rpghp:health_array
+execute unless score @s rpghp.hptrack = @s rpghp.hp run function rpghp:health_array
+execute store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
+
+#effect give @s minecraft:instant_damage 1 0 true
+#effect give @s minecraft:instant_health 1 0 true
+#effect give @s minecraft:saturation 1 0 true
 
 # exp recalc points needed for current level
+scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 
 

@@ -45,7 +45,7 @@ scoreboard players operation @s rpghp.i_math *= #xpmult rpghp.config
 scoreboard players operation @s rpghp.earned_exp += @s rpghp.i_math
 
 # loop function if variable is not at max hp yet
-execute unless score @s rpghp.i >= @s rpghp.hpcheck run function rpghp:exp_checker
+execute unless score @s rpghp.i >= @s rpghp.hpcheck run function rpghp:exp_recalc
 ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
 # start to reset exp max, for second and third calcs, recalc redundancy

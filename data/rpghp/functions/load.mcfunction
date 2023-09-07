@@ -23,6 +23,8 @@ scoreboard objectives add rpghp.hp dummy
 scoreboard objectives add rpghp.hptrack dummy
 # maths hp (used to calc xpmult)
 scoreboard objectives add rpghp.hptrack2 dummy
+# exp chacker storage
+scoreboard objectives add rpghp.hptrack3 dummy
 # admin set hp (gives instant hp)
 scoreboard objectives add rpghp.hpset dummy
 ##### # actual hp (for login healing loop, which was cut. move to chains!)
@@ -35,8 +37,12 @@ scoreboard objectives add rpghp.hpset dummy
 scoreboard objectives add rpghp.xp dummy
 # per level tracker
 scoreboard objectives add rpghp.xptrack dummy
+# recaLC xp tracker
+scoreboard objectives add rpghp.xptrack2 dummy
 # full xp counter
 scoreboard objectives add rpghp.xpcount dummy
+# recalc counter
+scoreboard objectives add rpghp.xpcount2 dummy
 # this number is the result of  - Needed exp is HP times variable set by admin below
 scoreboard objectives add rpghp.xpmult dummy
 
@@ -63,8 +69,10 @@ execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard playe
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20
 
 function rpghp:load_mobs
+
 function rpghp:load_exp_max
 function rpghp:load_exp_base
+scoreboard players operation #base_exp rpghp.config -= #xpmult rpghp.config
 
 scoreboard players set #zero rpghp.config 0
 scoreboard players set #neg1 rpghp.config -1
@@ -72,9 +80,18 @@ scoreboard players set #neg1 rpghp.config -1
 schedule clear function rpghp:tick
 schedule clear function rpghp:tick_10s
 # none constants -add toggle for admin in front of this
-execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
+execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 1
 execute unless score #exp_checker rpghp.config matches 1.. run schedule function rpghp:tick_10s 10s
 
+
+# load testing turn off or delete laTER
+#scoreboard objectives setdisplay sidebar rpghp.xpcount
+#scoreboard objectives setdisplay sidebar rpghp.xptrack
+scoreboard objectives setdisplay sidebar rpghp.hptrack
+#scoreboard objectives setdisplay sidebar rpghp.hp
+scoreboard players set #exp_checker rpghp.config 0
+
+scoreboard players set #chicken rpghp.config 2000
 
 ##### Notes:
 # trigger
