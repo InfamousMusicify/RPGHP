@@ -23,8 +23,6 @@ scoreboard objectives add rpghp.hp dummy
 scoreboard objectives add rpghp.hptrack dummy
 # maths hp (used to calc xpmult)
 scoreboard objectives add rpghp.hptrack2 dummy
-# exp chacker storage
-scoreboard objectives add rpghp.hptrack3 dummy
 # admin set hp (gives instant hp)
 scoreboard objectives add rpghp.hpset dummy
 ##### # actual hp (for login healing loop, which was cut. move to chains!)
@@ -37,8 +35,6 @@ scoreboard objectives add rpghp.hpset dummy
 scoreboard objectives add rpghp.xp dummy
 # per level tracker
 scoreboard objectives add rpghp.xptrack dummy
-# recaLC xp tracker
-scoreboard objectives add rpghp.xptrack2 dummy
 # full xp counter
 scoreboard objectives add rpghp.xpcount dummy
 # recalc counter
@@ -86,12 +82,15 @@ execute unless score #exp_checker rpghp.config matches 1.. run schedule function
 
 # load testing turn off or delete laTER
 #scoreboard objectives setdisplay sidebar rpghp.xpcount
+scoreboard objectives setdisplay sidebar rpghp.xpcount2
 #scoreboard objectives setdisplay sidebar rpghp.xptrack
-scoreboard objectives setdisplay sidebar rpghp.hptrack
+#scoreboard objectives setdisplay sidebar rpghp.hptrack
 #scoreboard objectives setdisplay sidebar rpghp.hp
 scoreboard players set #exp_checker rpghp.config 0
 
 scoreboard players set #chicken rpghp.config 2000
+
+#scoreboard players set @s rpghp.xpcount 0
 
 ##### Notes:
 # trigger

@@ -14,10 +14,8 @@ scoreboard players operation @s rpghp.xpcount2 = @s rpghp.xpcount
 #scoreboard players operation @s rpghp.hptrack = #start_hp rpghp.config
 scoreboard players set @s rpghp.hptrack 1
 
-
 # add xpcount to tracker for math 
 #scoreboard players operation @s rpghp.xptrack2 = @s rpghp.xpcount
-
 
 # add base exp
 #scoreboard players operation @s rpghp.xptrack += #base_exp rpghp.config
@@ -26,11 +24,7 @@ scoreboard players set @s rpghp.hptrack 1
 # run math loop func
 #execute as @s run function rpghp:exp_checker2
 function rpghp:exp_checker2
-
-
-
 ###################################################################################################
-
 # fix negative score -full exp counter
 execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
 execute if score @s rpghp.xpcount2 matches ..-1 run scoreboard players set @s rpghp.xpcount2 0
