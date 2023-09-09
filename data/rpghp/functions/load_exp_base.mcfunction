@@ -7,17 +7,17 @@ execute if score #exp_math2 rpghp.config matches 1.. run scoreboard players rese
 execute if score #exp_math2 rpghp.config matches 1.. run scoreboard players reset #exp_math2 rpghp.config
 
 # add 1 to variable unless start_hp reached
-execute unless score #j rpghp.config >= #start_hp rpghp.config run scoreboard players add #j rpghp.config 1
+execute if score #j rpghp.config < #start_hp rpghp.config run scoreboard players add #j rpghp.config 1
 
 # store variable for multiplication
-scoreboard players operation #j_math rpghp.config = #j rpghp.config
+execute unless score #j rpghp.config = #start_hp rpghp.config run scoreboard players operation #j_math rpghp.config = #j rpghp.config
 # multiply variable 
-scoreboard players operation #j_math rpghp.config *= #xpmult rpghp.config
+execute unless score #j rpghp.config = #start_hp rpghp.config run scoreboard players operation #j_math rpghp.config *= #xpmult rpghp.config
 # store result
-scoreboard players operation #base_exp rpghp.config += #j_math rpghp.config
+execute unless score #j rpghp.config = #start_hp rpghp.config run scoreboard players operation #base_exp rpghp.config += #j_math rpghp.config
 
 # loop function if variable is not at max hp yet
-execute unless score #j rpghp.config >= #start_hp rpghp.config run function rpghp:load_exp_base
+execute if score #j rpghp.config < #start_hp rpghp.config run function rpghp:load_exp_base
 ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
 

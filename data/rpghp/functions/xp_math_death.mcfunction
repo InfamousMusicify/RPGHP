@@ -20,9 +20,9 @@ scoreboard players set @s rpghp.xp 0
 # health tracker mods
 # add 1 to health if xp is over current levels needed amount
 execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players add @s rpghp.hptrack 1
-execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 50 force
+execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
 # negative - if score is less than zero, revert 1 level, unless at level 1, unless at or below lowest hp
-execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 100 force
+execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
 execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players remove @s rpghp.hptrack 1
 
 # subtract mult from gained exp, if gained exp is greater than needed

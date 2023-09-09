@@ -1,5 +1,5 @@
 # exp_checker
-
+say 1
 
 
 # check players full exp count against their level
@@ -26,5 +26,5 @@ scoreboard players set @s rpghp.hptrack 1
 function rpghp:exp_checker2
 ###################################################################################################
 # fix negative score -full exp counter
-execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
-execute if score @s rpghp.xpcount2 matches ..-1 run scoreboard players set @s rpghp.xpcount2 0
+#execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
+#execute if score @s rpghp.xpcount2 matches ..-1 run scoreboard players set @s rpghp.xpcount2 0

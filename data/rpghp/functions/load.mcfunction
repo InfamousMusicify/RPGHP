@@ -68,7 +68,7 @@ function rpghp:load_mobs
 
 function rpghp:load_exp_max
 function rpghp:load_exp_base
-scoreboard players operation #base_exp rpghp.config -= #xpmult rpghp.config
+####scoreboard players operation #base_exp rpghp.config -= #xpmult rpghp.config
 
 scoreboard players set #zero rpghp.config 0
 scoreboard players set #neg1 rpghp.config -1
