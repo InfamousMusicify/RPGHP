@@ -12,6 +12,7 @@ scoreboard players set @s rpghp_log 0
 scoreboard players add @s rpghp.respawn 30
 
 scoreboard players enable @a rpghp
+scoreboard players add @s rpghp.respheal 0
 
 # starting HP
 execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config

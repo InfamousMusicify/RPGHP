@@ -82,13 +82,13 @@ execute unless score #exp_checker rpghp.config matches 1.. run schedule function
 
 # load testing turn off or delete laTER
 #scoreboard objectives setdisplay sidebar rpghp.xpcount
-scoreboard objectives setdisplay sidebar rpghp.xpcount2
+#scoreboard objectives setdisplay sidebar rpghp.xpcount2
 #scoreboard objectives setdisplay sidebar rpghp.xptrack
 #scoreboard objectives setdisplay sidebar rpghp.hptrack
 #scoreboard objectives setdisplay sidebar rpghp.hp
-scoreboard players set #exp_checker rpghp.config 0
+#scoreboard players set #exp_checker rpghp.config 0
 
-scoreboard players set #chicken rpghp.config 2000
+#scoreboard players set #chicken rpghp.config 2000
 
 #scoreboard players set @s rpghp.xpcount 0
 

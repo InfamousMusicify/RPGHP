@@ -35,7 +35,7 @@ execute if score @s rpghp.hptrack = #max_hp rpghp.config run function rpghp:heal
 #scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
 
 
-# redundancy loop for getting multiple levels of exp at once          V broken here stuck at level 65 idk what the fuck bro.. seriously. what in the fuck
+# redundancy loop for getting multiple levels of exp at once         V fixed old bug spot
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult unless score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:exp_checker2
 ##### execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run function rpghp:exp_checker2
 #function rpghp:exp_checker2

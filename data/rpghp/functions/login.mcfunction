@@ -22,7 +22,7 @@
 #execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
 
 scoreboard players enable @s rpghp
-
+scoreboard players add @s rpghp.respheal 0
 
 
 

@@ -41,7 +41,7 @@ execute as @a[scores={rpghp.respawn=1..20}] run function rpghp:respawn
 
 
 # check exp vs level and recalc
-#execute unless score #exp_checker rpghp.config matches 1.. as @a[scores={rpghp.xpcount=1..}] run function rpghp:exp_checker
+execute unless score #exp_checker rpghp.config matches 1.. as @a[scores={rpghp.xpcount=1..}] run function rpghp:exp_checker
 
 #execute as @a[scores={rpghp.health=0,rpghp.count=1..}] unless score @s rpghp.config matches 3 run function rpghp:regen
 
@@ -52,5 +52,5 @@ scoreboard players enable @a rpghp
 #execute as @a[scores={rpghp=1..}] run function rpghp:trigger
 #execute unless score #rpghp_heal rpghp.config matches 1.. as @a unless score @s rpghp matches 0 unless score @s rpghp matches 2 run function rpghp:trigger
 #execute as @a unless score @s rpghp matches 0 run function rpghp:trigger
-execute as @a unless score @s rpghp matches 0 unless score @s rpghp matches 3 run function rpghp:trigger
+execute as @a unless score @s rpghp matches 0 run function rpghp:trigger
 # # # 

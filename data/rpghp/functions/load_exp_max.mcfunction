@@ -3,7 +3,7 @@
 
 
 
-
+# all lvels including final level =  max points
 
 #####     Max EXP
 # reset max exp for 2nd and 3rd calcs. recalc redundancy

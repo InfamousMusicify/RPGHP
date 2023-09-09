@@ -1,5 +1,5 @@
 # exp_checker
-say 1
+#say 1
 
 
 # check players full exp count against their level
