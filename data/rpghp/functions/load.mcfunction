@@ -76,19 +76,28 @@ scoreboard players set #neg1 rpghp.config -1
 schedule clear function rpghp:tick
 schedule clear function rpghp:tick_10s
 # none constants -add toggle for admin in front of this
-execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 1
+execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
+execute unless score #xp_math rpghp.config matches 0.. run scoreboard players set #xp_math rpghp.config 0
+
+
 #execute unless score #exp_checker rpghp.config matches 1.. run schedule function rpghp:tick_10s 10s
 
 
-# load testing turn off or delete laTER
+# LOAD TESTING        -turn off or delete laTER
 #scoreboard objectives setdisplay sidebar rpghp.xpcount
 #scoreboard objectives setdisplay sidebar rpghp.xpcount2
 scoreboard objectives setdisplay sidebar rpghp.xptrack
 #scoreboard objectives setdisplay sidebar rpghp.hptrack
 #scoreboard objectives setdisplay sidebar rpghp.hp
-#scoreboard players set #exp_checker rpghp.config 0
+
+#scoreboard players set #exp_checker rpghp.config 1
+#scoreboard players set #exp_checker rpghp.config 2
+#scoreboard players set #exp_checker rpghp.config 3
 
 scoreboard players set #chicken rpghp.config 2000
+scoreboard players set #zombie rpghp.config 69
+scoreboard players set #pig rpghp.config -2
+scoreboard players set #cow rpghp.config -2000
 
 #scoreboard players set @s rpghp.xpcount 0
 

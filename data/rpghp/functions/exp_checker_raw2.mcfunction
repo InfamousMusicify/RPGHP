@@ -1,7 +1,7 @@
-# exp_checker2
+# exp_checker_raw2
 #
-#
-
+# 
+# Hp Gain with no limits - ignores lowest and highest scores, pure calculations for exp to level
 
 # store arb health score for math - exp recalc points needed for current level
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
@@ -29,14 +29,14 @@ execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players ope
 
 #execute if score @s rpghp.xpcount2 < @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack = @s rpghp.xpcount2
 #og#execute unless score @s rpghp.hptrack = @s rpghp.hp run function rpghp:health_array
-execute unless score @s rpghp.hptrack = #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run function rpghp:health_array
-execute if score @s rpghp.hptrack = #max_hp rpghp.config run function rpghp:health_array
+execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run function rpghp:health_array
+execute if score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:health_array
 ##### execute store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
 #scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
 
 
 # redundancy loop for getting multiple levels of exp at once         V fixed old bug spot
-execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult unless score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:exp_checker2
+execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run function rpghp:exp_checker2
 ##### execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run function rpghp:exp_checker2
 #function rpghp:exp_checker2
 ##### execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult unless score @s rpghp.hptrack >= #max_hp rpghp.config run schedule function rpghp:exp_checker_sched 1t

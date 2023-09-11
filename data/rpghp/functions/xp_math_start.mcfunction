@@ -1,4 +1,4 @@
-# xp_math
+# xp_math_start
 
 
 
@@ -29,8 +29,8 @@ execute if score #xp_math rpghp.config matches 0 run scoreboard players set @s r
 execute if score #xp_math rpghp.config matches 0 run function rpghp:xp_math_full
 
 
-# store base health score to tracker for maths  -unless respawning- death interferes with this math
-execute if score #xp_math rpghp.config matches 1 unless score @s rpghp.respawn matches 1..20 run scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+# store base health score to tracker for maths
+scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
 # run math loop func -lvl based
 execute if score #xp_math rpghp.config matches 1 run function rpghp:xp_math_lvl
 

@@ -7,7 +7,7 @@
 scoreboard players operation @s rpghp.xp += #death rpghp.config
 # do math
 ##### execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
-execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math2
+execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
 
 execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252 true
 
