@@ -5,7 +5,7 @@ This pack finds it's place on every type of world/server.
 
 ### Check the advancements menu for usage/info in game.    
 
-## [Download🔗](https://github.com/InfamousMusicify//RPGHealth/blob/master/Downloads.md) - [Discord🔊](https://discord.gg/T5XhN4tXgW)           
+## [Download🔗](https://github.com/InfamousMusicify//RPGHP/blob/master/Downloads.md) - [Discord🔊](https://discord.gg/T5XhN4tXgW)           
 
 **Useage:**     
 Kill mobs and players to gain exp and level up your health!   
