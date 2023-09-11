@@ -35,6 +35,9 @@ execute if score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrac
 # fix negative score -full exp counter
 execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
 
+# Store Earnt HP
+execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+
 # HEALTH ARRAY #### ##### ##### ##### ##### ##### ##### ##### ##### 
 # give players health
 #function rpghp:health_array

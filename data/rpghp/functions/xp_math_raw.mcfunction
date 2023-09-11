@@ -18,6 +18,9 @@ execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players ope
 # TRACK XP store leftover to track for better math keeping
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack = @s rpghp.xpcount2
 
+# Store Earnt HP
+execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+
 # health array
 execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run function rpghp:health_array
 execute if score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:health_array

@@ -25,9 +25,19 @@ execute as @a[scores={rpghp.respawn=1..20}] run function rpghp:respawn
 
 # admin set player health
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
-execute as @a[scores={rpghp.hpset=1..}] run function rpghp:set_health
+execute as @a[scores={rpghp.hpch=1..}] unless score @s rpghp.hptrack = @s rpghp.hpch run function rpghp:set_health_player
+
+# admin set player health
+#execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
+execute as @a[scores={rpghp.hpset=1..}] unless score @s rpghp.hptrack = @s rpghp.hpset run function rpghp:set_health
 
 # trigger - player stats and settings
 scoreboard players enable @a rpghp
 execute as @a unless score @s rpghp matches 0 run function rpghp:trigger
 # # # 
+
+
+
+# kill command toggles timers
+scoreboard players add @a[scores={rpghp.hpchoose=1..}] rpghp.hpchoose 1
+scoreboard players set @a[scores={rpghp.hpchoose=60..}] rpghp.hpchoose 0

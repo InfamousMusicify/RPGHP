@@ -10,8 +10,9 @@ scoreboard objectives add rpghp trigger
 scoreboard objectives add rpghp.rpghp dummy
 scoreboard objectives add rpghp.hpmod dummy
 scoreboard objectives add rpghp.hpchoose dummy
+scoreboard objectives add rpghp.hpch dummy
 scoreboard objectives add rpghp.respheal dummy
-scoreboard objectives add rpghp.logheal dummy
+#scoreboard objectives add rpghp.logheal dummy
 #
 
 # player exp
@@ -25,6 +26,8 @@ scoreboard objectives add rpghp.hptrack dummy
 scoreboard objectives add rpghp.hptrack2 dummy
 # admin set hp (gives instant hp)
 scoreboard objectives add rpghp.hpset dummy
+# max earned level storage
+scoreboard objectives add rpghp.earnt_hp dummy
 ##### # actual hp (for login healing loop, which was cut. move to chains!)
 ##### scoreboard objectives add rpghp.hplvl health
 ##### # base hp tracker for math
@@ -74,7 +77,7 @@ scoreboard players set #zero rpghp.config 0
 scoreboard players set #neg1 rpghp.config -1
 
 schedule clear function rpghp:tick
-schedule clear function rpghp:tick_10s
+
 # none constants -add toggle for admin in front of this
 execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
 execute unless score #xp_math rpghp.config matches 0.. run scoreboard players set #xp_math rpghp.config 0
@@ -86,7 +89,7 @@ execute unless score #xp_math rpghp.config matches 0.. run scoreboard players se
 # LOAD TESTING        -turn off or delete laTER
 #scoreboard objectives setdisplay sidebar rpghp.xpcount
 #scoreboard objectives setdisplay sidebar rpghp.xpcount2
-scoreboard objectives setdisplay sidebar rpghp.xptrack
+#scoreboard objectives setdisplay sidebar rpghp.xptrack
 #scoreboard objectives setdisplay sidebar rpghp.hptrack
 #scoreboard objectives setdisplay sidebar rpghp.hp
 
@@ -94,10 +97,10 @@ scoreboard objectives setdisplay sidebar rpghp.xptrack
 #scoreboard players set #exp_checker rpghp.config 2
 #scoreboard players set #exp_checker rpghp.config 3
 
-scoreboard players set #chicken rpghp.config 2000
-scoreboard players set #zombie rpghp.config 69
-scoreboard players set #pig rpghp.config -2
-scoreboard players set #cow rpghp.config -2000
+#scoreboard players set #chicken rpghp.config 2000
+#scoreboard players set #zombie rpghp.config 69
+#scoreboard players set #pig rpghp.config -2
+#scoreboard players set #cow rpghp.config -2000
 
 #scoreboard players set @s rpghp.xpcount 0
 

@@ -1,19 +1,19 @@
 # new_player
 
 
-
-
-# bug fix for logout taking 2 logs
-scoreboard players set @s rpghp_log 0
-
-#
-
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 # bug fix to stop respawn function firing on new players and fucking up their scores and health
 scoreboard players add @s rpghp.respawn 30
+# bug fix for logout taking 2 logs
+scoreboard players set @s rpghp_log 0
+##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+scoreboard players enable @s rpghp
 
-scoreboard players enable @a rpghp
+scoreboard players add @s rpghp.rpghp 0
+scoreboard players add @s rpghp.hpmod 0
+scoreboard players set @s rpghp.hpchoose 0
 scoreboard players add @s rpghp.respheal 0
-
+##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 # starting HP
 execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config
 # more starting hp

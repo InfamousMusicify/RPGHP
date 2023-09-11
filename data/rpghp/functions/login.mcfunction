@@ -22,8 +22,11 @@
 #execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
 
 scoreboard players enable @s rpghp
-scoreboard players add @s rpghp.respheal 0
 
+scoreboard players add @s rpghp.rpghp 0
+scoreboard players add @s rpghp.hpmod 0
+scoreboard players set @s rpghp.hpchoose 0
+scoreboard players add @s rpghp.respheal 0
 
 
 # Reset Logout Score for next login redundancy

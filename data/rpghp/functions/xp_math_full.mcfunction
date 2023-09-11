@@ -20,6 +20,9 @@ execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult if score #lowest_hp rpghp.
 # TRACK XP store leftover to track for better math keeping
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack = @s rpghp.xpcount2
 
+# Store Earnt HP
+execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+
 # health array
 #execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
 execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult run function rpghp:health_array
