@@ -15,13 +15,18 @@ scoreboard players set @s rpghp.hpchoose 0
 scoreboard players add @s rpghp.respheal 0
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 # starting HP
-execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config
+##### execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config
 # more starting hp
-execute unless score @s rpghp.hp matches 1.. run scoreboard players operation @s rpghp.hp = #start_hp rpghp.config
-execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hptrack = #start_hp rpghp.config
+#execute unless score @s rpghp.hp matches 1.. run scoreboard players operation @s rpghp.hp = #start_hp rpghp.config
+#execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hptrack = #start_hp rpghp.config
+execute unless score @s rpghp.earnt_hp matches 1.. run scoreboard players operation @s rpghp.earnt_hp = #start_hp rpghp.config
 
 # starting XP
 execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
+
+# proper health setter
+execute unless score @s rpghp.hp matches 1.. unless score @s rpghp.hptrack matches 1.. run function rpghp:new_player_sethp
+
 #dont do this because itll add double# execute unless score @s rpghp.xptrack matches 1.. run scoreboard players operation @s rpghp.xptrack = #base_exp rpghp.config
 
 # start exp mult counter  -currently trash and broken
@@ -31,3 +36,6 @@ execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operati
 # TODO
 # player choices:
 # max HP set by admin
+
+
+

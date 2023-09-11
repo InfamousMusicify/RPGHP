@@ -4,7 +4,7 @@
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpch
 scoreboard players set @s[scores={rpghp.hpch=1025..}] rpghp.hpch 1024
 
-scoreboard players operation @s rpghp.hp = @s rpghp.hpch
+#scoreboard players operation @s rpghp.hp = @s rpghp.hpch
 scoreboard players operation @s rpghp.hptrack = @s rpghp.hpch
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hpch
 #execute unless score @s rpghp.hptrack matches 20 run function rpghp:health_array
