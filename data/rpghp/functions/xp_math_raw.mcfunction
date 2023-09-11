@@ -22,8 +22,8 @@ execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players ope
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
 
 # health array
-execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run function rpghp:health_array
-execute if score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:health_array
+execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array
+execute if score @s rpghp.hptrack >= #max_hp rpghp.config unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array
 
 # redundancy loop for getting multiple levels of exp at once
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run function rpghp:xp_math_raw

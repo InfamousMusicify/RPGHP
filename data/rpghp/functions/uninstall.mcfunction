@@ -9,16 +9,21 @@ scoreboard objectives remove rpghp
 scoreboard objectives remove rpghp.rpghp
 scoreboard objectives remove rpghp.hpmod
 scoreboard objectives remove rpghp.hpchoose
+scoreboard objectives remove rpghp.hpch
 scoreboard objectives remove rpghp.respheal
 scoreboard objectives remove rpghp.hp
 scoreboard objectives remove rpghp.hptrack
 scoreboard objectives remove rpghp.hptrack2
+scoreboard objectives remove rpghp.earnt_hp
 scoreboard objectives remove rpghp.hpset
 scoreboard objectives remove rpghp.xp
 scoreboard objectives remove rpghp.xptrack
 scoreboard objectives remove rpghp.xpcount
 scoreboard objectives remove rpghp.xpcount2
 scoreboard objectives remove rpghp.xpmult
+
+
+
 
 
 

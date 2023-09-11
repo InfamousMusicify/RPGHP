@@ -41,8 +41,11 @@ execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players ope
 # HEALTH ARRAY #### ##### ##### ##### ##### ##### ##### ##### ##### 
 # give players health
 #function rpghp:health_array
-execute unless score @s rpghp.hptrack = @s rpghp.hp run function rpghp:health_array
+#execute unless score @s rpghp.hptrack = @s rpghp.hp run function rpghp:health_array
 execute store result score @s rpghp.hp run attribute @s minecraft:generic.max_health base get
+#execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xptrack >= @s rpghp.xpmult run function rpghp:health_array
+execute unless score @s rpghp.hptrack >= #max_hp rpghp.config unless score @s rpghp.hptrack = @s rpghp.hp unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array
+
 
 # LOOP   -redundancy loop for getting multiple levels of exp at once
 execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run function rpghp:xp_math_lvl

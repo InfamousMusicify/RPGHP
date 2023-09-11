@@ -25,8 +25,11 @@ execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players ope
 
 # health array
 #execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 <= @s rpghp.xpmult run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
-execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult run function rpghp:health_array
-execute if score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:health_array
+execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array
+execute if score @s rpghp.hptrack >= #max_hp rpghp.config unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array
+
+# health_array_track
+##### execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult unless score @s rpghp.ha_track matches 1.. run scoreboard players add @s rpghp.ha_track 1
 
 # loop - multiple levels of exp at once
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult unless score @s rpghp.hptrack >= #max_hp rpghp.config run function rpghp:xp_math_full
