@@ -1,6 +1,6 @@
 # exp_checker2
 #
-# Redo with lowest and highest checks!
+#
 
 
 # store arb health score for math - exp recalc points needed for current level

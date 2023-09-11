@@ -1,5 +1,9 @@
 # config
 
+
+
+execute if score #max_hp rpghp.config matches 1025.. run scoreboard players set #max_hp rpghp.config 1024
+#########################################################################################################
 tellraw @s {"text":"                                                                                ","color":"dark_gray","strikethrough":true}
 tellraw @s ["                           RPGHealth",{"text":" / ","color":"gray"},"Global Settings"]
 tellraw @s {"text":"                                                                                ","color":"dark_gray","strikethrough":true}

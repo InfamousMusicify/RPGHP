@@ -22,6 +22,7 @@
 ##### execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 
 ###
+execute if score #max_hp rpghp.config matches 1025.. run scoreboard players set #max_hp rpghp.config 1024
 scoreboard players set @s[scores={rpghp.hptrack=1025..}] rpghp.hptrack 1024
 
 

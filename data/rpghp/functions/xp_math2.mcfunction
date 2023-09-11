@@ -26,6 +26,11 @@ execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack <
 execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
 execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players remove @s rpghp.hptrack 1
 
+
+# if count is over max give max level.  -broken
+#execute if score #max_exp rpghp.config >= @s rpghp.xpcount run scoreboard players operation @s rpghp.hptrack = #max_hp rpghp.config
+
+
 # MULT again  -store arb health score for math - exp recalc points needed for current level
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config

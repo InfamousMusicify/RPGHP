@@ -1,7 +1,7 @@
-# load_exp
+# load_exp_max
 # intial exp math to store max exp to admin storage and or new players.
 
-
+execute if score #max_hp rpghp.config matches 1025.. run scoreboard players set #max_hp rpghp.config 1024
 
 # all lvels including final level =  max points
 
