@@ -11,6 +11,7 @@ execute store result score @s rpghp.xpmult run scoreboard players operation @s r
 
 # health tracker mods
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players add @s rpghp.hptrack 1
+execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players add @s rpghp.earnt_hp 1
 
 # subtract mult from gained exp, if gained exp is greater than needed
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players operation @s rpghp.xpcount2 -= @s rpghp.xpmult
@@ -19,7 +20,7 @@ execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult run scoreboard players ope
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack = @s rpghp.xpcount2
 
 # Store Earnt HP
-execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+#execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
 
 # health array
 execute unless score @s rpghp.hptrack >= #max_hp rpghp.config if score @s rpghp.xpcount2 < @s rpghp.xpmult unless score @s rpghp.hpch matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:health_array

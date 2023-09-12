@@ -67,6 +67,8 @@ execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard playe
 # this doesnt need to be done, this is a tracker for player exp
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20
 
+execute unless score #rpghp.hpmod rpghp.config matches 0.. run scoreboard players set #rpghp.hpmod rpghp.config 0
+
 function rpghp:load_mobs
 
 function rpghp:load_exp_max
@@ -80,7 +82,7 @@ schedule clear function rpghp:tick
 
 # none constants -add toggle for admin in front of this
 execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
-execute unless score #xp_math rpghp.config matches 0.. run scoreboard players set #xp_math rpghp.config 0
+execute unless score #xp_math rpghp.config matches 0.. run scoreboard players set #xp_math rpghp.config 1
 
 
 #execute unless score #exp_checker rpghp.config matches 1.. run schedule function rpghp:tick_10s 10s

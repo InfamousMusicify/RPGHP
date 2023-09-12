@@ -1,5 +1,5 @@
 # xp_math
-
+# called by killing or death
 
 
 
@@ -9,30 +9,24 @@ execute if score #max_hp rpghp.config matches 1025.. run scoreboard players set 
 
 ########################################################################################################################################################################################################################
 # STORE EXP   -store variable to xp per level tracker for math
-execute unless score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xp
-# negative
-execute if score #lowest_hp rpghp.config <= @s rpghp.hp unless score @s rpghp.xpcount matches ..0 if score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xp
-# FULL EXP count storage
-execute unless score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xpcount += @s rpghp.xp
-# negative
-execute if score #lowest_hp rpghp.config <= @s rpghp.hp unless score @s rpghp.xpcount matches ..0 if score @s rpghp.xp matches ..-1 run scoreboard players operation @s rpghp.xpcount += @s rpghp.xp
-# reset main xp
-scoreboard players set @s rpghp.xp 0
+execute unless score #xp_math rpghp.config matches 0 run function rpghp:xp_math_store
 
 #############################################################
 
 # store exp for recalc -full point calc
-execute if score #xp_math rpghp.config matches 0 run scoreboard players operation @s rpghp.xpcount2 = @s rpghp.xpcount
+execute if score #xp_math rpghp.config matches 1..2 run scoreboard players operation @s rpghp.xpcount2 = @s rpghp.xpcount
 # reset hp track temporarily for recalc math
-execute if score #xp_math rpghp.config matches 0 run scoreboard players set @s rpghp.hptrack 1
+execute if score #xp_math rpghp.config matches 1..2 unless score @s rpghp.hpmod < #rpghp.hpmod rpghp.config unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players set @s rpghp.hptrack 1
+execute if score #xp_math rpghp.config matches 1..2 run scoreboard players set @s rpghp.earnt_hp 1
 # run math loop func
-execute if score #xp_math rpghp.config matches 0 run function rpghp:xp_math_full
+execute if score #xp_math rpghp.config matches 1 run function rpghp:xp_math_full
 
+execute if score #xp_math rpghp.config matches 2 run function rpghp:xp_math_raw
 
 # store base health score to tracker for maths  -unless respawning- death interferes with this math
-execute if score #xp_math rpghp.config matches 1 unless score @s rpghp.respawn matches 1..20 run scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
+execute if score #xp_math rpghp.config matches 3 unless score @s rpghp.respawn matches 1..20 run scoreboard players operation @s rpghp.hptrack = @s rpghp.hp
 # run math loop func -lvl based
-execute if score #xp_math rpghp.config matches 1 run function rpghp:xp_math_lvl
+execute if score #xp_math rpghp.config matches 3 run function rpghp:xp_math_lvl
 
 #########################################################################################
 

@@ -1,4 +1,6 @@
 # xp_math_lvl
+# level based - Solid in one way - Broken and inconsistent in another way... - if chosen from day 1 by admin, its mostly fine.
+# if players choose hp, it will reset their earnt hp level.
 
 
 
@@ -8,16 +10,26 @@ execute store result score @s rpghp.xpmult run scoreboard players operation @s r
 
 # HEALTH ADD   -health tracker mods
 # add 1 to health if xp is over current levels needed amount
-execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
-execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players add @s rpghp.hptrack 1
+# particle
+execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config unless score @s rpghp.hpmod < #rpghp.hpmod rpghp.config unless score #rpghp.hpmod rpghp.config matches 1.. at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
+# hptrack
+execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config unless score @s rpghp.hpmod < #rpghp.hpmod rpghp.config unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players add @s rpghp.hptrack 1
+# hpch -only neg needs this
+#execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hpch < #max_hp rpghp.config unless score @s rpghp.hpmod < #rpghp.hpmod rpghp.config unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players add @s rpghp.hpch 1
+
 # negative - if score is less than zero, revert 1 level, unless at level 1, unless at or below lowest hp
-execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
-execute unless score @s rpghp.hp matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players remove @s rpghp.hptrack 1
+#OG# execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
+#OG# execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 run scoreboard players remove @s rpghp.hptrack 1
 
-
-# if count is over max give max level.  -broken -ATTEMPT TO FIX BUG WITH LARGE 6digit exp incoming or previously stored breaking loops.
-#execute if score #max_exp rpghp.config >= @s rpghp.xpcount run scoreboard players operation @s rpghp.hptrack = #max_hp rpghp.config
-
+# ignore the players choice, just check against earnt level and subtract if below
+# particles
+execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 if score @s rpghp.earnt_hp < @s rpghp.hpch unless score #rpghp.hpmod rpghp.config matches 1.. at @s run particle minecraft:heart ~ ~ ~ 1 1 1 0.1 10 force
+# base - unless hpmod admin 
+execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players remove @s rpghp.hptrack 1
+# mirror hpch -done in theory -only fire when player is using hpch and looses lowest level of hp -unless admin tgl -unless player toggle
+execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 if score @s rpghp.earnt_hp < @s rpghp.hpch unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players remove @s rpghp.hpch 1
+# earnt hp track -pos and neg  -may need revising
+execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.earnt_hp < #max_hp rpghp.config run scoreboard players add @s rpghp.earnt_hp 1
 
 # MULT again  -store arb health score for math - exp recalc points needed for current level
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
@@ -36,7 +48,8 @@ execute if score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrac
 execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
 
 # Store Earnt HP
-execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+#OG# execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+
 
 # HEALTH ARRAY #### ##### ##### ##### ##### ##### ##### ##### ##### 
 # give players health
