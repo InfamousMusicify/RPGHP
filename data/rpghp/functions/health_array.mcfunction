@@ -1023,6 +1023,7 @@ execute as @s[scores={rpghp.hptrack=1022}] run attribute @s minecraft:generic.ma
 execute as @s[scores={rpghp.hptrack=1023}] run attribute @s minecraft:generic.max_health base set 1023
 execute as @s[scores={rpghp.hptrack=1024..}] run attribute @s minecraft:generic.max_health base set 1024
 
+
 # health_array
 # absolute max as of 1.20 is 1024, i tested it a bit.
 

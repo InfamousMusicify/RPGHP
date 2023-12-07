@@ -70,6 +70,8 @@ execute unless score #rpghp.msg rpghp.config matches 0.. run scoreboard players 
 # respawn heal toggle -bug fix for larger/smaller amounts of health
 execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard players set #respawn_heal rpghp.config 0
 execute unless score #respawn_hurt rpghp.config matches 0.. run scoreboard players set #respawn_hurt rpghp.config 0
+# hp change hurts below 20
+##### execute unless score #hpchng_hurt rpghp.config matches 0.. run scoreboard players set #hpchng_hurt rpghp.config 0
 
 # this doesnt need to be done, this is a tracker for player exp
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20

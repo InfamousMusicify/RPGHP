@@ -16,11 +16,13 @@ execute as @a store result score @s rpghp.hp run attribute @s minecraft:generic.
 #exp_checker
 execute unless score #exp_checker rpghp.config matches 0 as @a[scores={rpghp.xpcount=1..}] run function rpghp:xp_checker
 
+
 # reset players health if it somehow drifts.  (death and other things can reset your hp, this is a redundancy)
 execute as @a[scores={rpghp.respawn=21..}] unless score @s rpghp.hp = @s rpghp.hptrack run function rpghp:reset_health
 
 # death
 execute as @a[scores={rpghp.respawn=1..20}] run function rpghp:respawn
+execute unless score #respawn_hurt rpghp.config matches 1.. as @a[scores={rpghp.respawn=41..80}] run effect give @s[scores={rpghp.hptrack=..19}] minecraft:instant_damage 1 0 true
 
 # player set health
 execute as @a[scores={rpghp.hpch=1..}] unless score @s rpghp.hpset matches 1.. unless score @s rpghp.hptrack = @s rpghp.hpch unless score @s rpghp.earnt_hp < @s rpghp.hpch run function rpghp:set_health_player
@@ -28,6 +30,8 @@ execute as @a[scores={rpghp.hpch=1..}] unless score @s rpghp.hpset matches 1.. u
 # admin set player health
 #execute as @a unless score @s rpghp.hp < @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = @s rpghp.hpset
 execute as @a[scores={rpghp.hpset=1..}] unless score @s rpghp.hptrack = @s rpghp.hpset run function rpghp:set_health
+
+
 
 # trigger - player stats and settings
 scoreboard players enable @a rpghp

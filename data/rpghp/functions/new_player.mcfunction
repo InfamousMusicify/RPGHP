@@ -13,6 +13,7 @@ scoreboard players add @s rpghp.rpghp 0
 scoreboard players add @s rpghp.hpmod 0
 scoreboard players set @s rpghp.hpchoose 0
 scoreboard players add @s rpghp.respheal 0
+scoreboard players add @s rpghp.hpch 0
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 # starting HP
 ##### execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config
@@ -25,7 +26,7 @@ execute unless score @s rpghp.earnt_hp matches 1.. run scoreboard players operat
 execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
 
 # hp choice for player commands
-execute unless score @s rpghp.hpch matches 1.. run scoreboard players operation @s rpghp.hpch = @s rpghp.earnt_hp
+#execute unless score @s rpghp.hpch matches 1.. run scoreboard players operation @s rpghp.hpch = @s rpghp.earnt_hp
 
 # proper health setter
 execute unless score @s rpghp.hp matches 1.. unless score @s rpghp.hptrack matches 1.. run function rpghp:new_player_sethp
