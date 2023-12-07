@@ -24,6 +24,9 @@ execute unless score @s rpghp.earnt_hp matches 1.. run scoreboard players operat
 # starting XP
 execute unless score @s rpghp.xpcount matches 0.. run scoreboard players operation @s rpghp.xpcount = #base_exp rpghp.config
 
+# hp choice for player commands
+execute unless score @s rpghp.hpch matches 1.. run scoreboard players operation @s rpghp.hpch = @s rpghp.earnt_hp
+
 # proper health setter
 execute unless score @s rpghp.hp matches 1.. unless score @s rpghp.hptrack matches 1.. run function rpghp:new_player_sethp
 

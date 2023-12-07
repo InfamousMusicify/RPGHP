@@ -1,6 +1,7 @@
 # xp_math_lvl
 # level based - Solid in one way - Broken and inconsistent in another way... - if chosen from day 1 by admin, its mostly fine.
 # if players choose hp, it will reset their earnt hp level.
+# i have no idea how this will work in tick... needs testing
 
 
 

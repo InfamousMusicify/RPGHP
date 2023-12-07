@@ -8,9 +8,12 @@ scoreboard objectives add rpghp.respawn minecraft.custom:minecraft.time_since_de
 # trigger
 scoreboard objectives add rpghp trigger
 scoreboard objectives add rpghp.rpghp dummy
+# hp on or off - player
 scoreboard objectives add rpghp.hpmod dummy
+# hp set - player
 scoreboard objectives add rpghp.hpchoose dummy
 scoreboard objectives add rpghp.hpch dummy
+# respawn heal - player
 scoreboard objectives add rpghp.respheal dummy
 #scoreboard objectives add rpghp.logheal dummy
 #
@@ -63,11 +66,18 @@ execute unless score #rpghp.msg rpghp.config matches 0.. run scoreboard players 
 
 # login heal toggle -bug fix for larger amounts of health
 #execute unless score #login_heal rpghp.config matches 0.. run scoreboard players set #login_heal rpghp.config 0
+
+# respawn heal toggle -bug fix for larger/smaller amounts of health
 execute unless score #respawn_heal rpghp.config matches 0.. run scoreboard players set #respawn_heal rpghp.config 0
+execute unless score #respawn_hurt rpghp.config matches 0.. run scoreboard players set #respawn_hurt rpghp.config 0
+
 # this doesnt need to be done, this is a tracker for player exp
 #execute unless score #rpghp.xp rpghp.config matches 0.. run scoreboard players set #rpghp.xp rpghp.config 20
-
+# admin hp apply toggle
 execute unless score #rpghp.hpmod rpghp.config matches 0.. run scoreboard players set #rpghp.hpmod rpghp.config 0
+
+# admin, login reset staller
+execute unless score #login rpghp.config matches 0.. run scoreboard players set #login rpghp.config 0
 
 function rpghp:load_mobs
 
@@ -80,7 +90,7 @@ scoreboard players set #neg1 rpghp.config -1
 
 schedule clear function rpghp:tick
 
-# none constants -add toggle for admin in front of this
+# non-constants -add toggle for admin in front of this
 execute unless score #exp_checker rpghp.config matches 0.. run scoreboard players set #exp_checker rpghp.config 0
 execute unless score #xp_math rpghp.config matches 0.. run scoreboard players set #xp_math rpghp.config 1
 
@@ -110,6 +120,9 @@ execute unless score #xp_math rpghp.config matches 0.. run scoreboard players se
 # trigger
 # rpghp = regen
 
+# use tags for admin controlled player permission nodes.  unless tag=rpghp.off
+# players have perms by default unless admins take them away in newplayer, or after the fact, or with global toggles
+# does it even make sense to try to do per plyer perm nodes?  i mean its easy to do but, like, the admin intervention is insane without a group manager...
 
 # # Most recent debates
 ##### Port login healing to chains because thats the one that needs the bug fix.  apperently attribute modifiers just dont have this bug

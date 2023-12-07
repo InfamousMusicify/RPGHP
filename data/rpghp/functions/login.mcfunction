@@ -6,8 +6,10 @@
 scoreboard players enable @s rpghp
 
 scoreboard players add @s rpghp.rpghp 0
+# what is this?
 scoreboard players add @s rpghp.hpmod 0
 scoreboard players set @s rpghp.hpchoose 0
+# player healing choice
 scoreboard players add @s rpghp.respheal 0
 
 
@@ -18,7 +20,11 @@ scoreboard players add @s rpghp.respheal 0
 # proper health setter
 #execute unless score @s rpghp.hp matches 1.. unless score @s rpghp.hptrack matches 1.. run function rpghp:new_player_sethp
 
-execute unless score @s rpghp.hp matches 1.. run function rpghp:new_player
+
+##OG  execute unless score @s rpghp.hp matches 1.. run function rpghp:new_player
+# new
+#execute unless admin disabled, unless hpset is set
+execute unless score #login rpghp.config matches 1.. unless score @s rpghp.hpset matches 1.. run function rpghp:new_player
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 
 

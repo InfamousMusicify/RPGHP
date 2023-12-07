@@ -8,9 +8,10 @@ scoreboard players operation @s rpghp.xp += #death rpghp.config
 # do math
 ##### execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
 execute unless score @s rpghp.xp matches 0 run function rpghp:xp_math
-
+# give heath if above 21(under doesnt matter), if admin enabled, if player enabled
 execute unless score #respawn_heal rpghp.config matches 1.. unless score @s rpghp.respheal matches 1.. as @s[scores={rpghp.hptrack=21..}] run effect give @s minecraft:instant_health 1 252 true
-
+# take health if 19 and below? add config and setups, i wnat this on by default
+execute unless score #respawn_hurt rpghp.config matches 1.. as @s[scores={rpghp.hptrack=..19}] run effect give @s minecraft:instant_damage 1 0 true
 
 
 
