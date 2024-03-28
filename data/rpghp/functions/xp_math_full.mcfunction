@@ -5,25 +5,34 @@
 # Lowest -test implimentation
 # say math full fire
 
-# store arb health score for math - exp recalc points needed for current level
+# unless score @s rpghp.earnt_hp <= #lowest_hp rpghp.config
+
+######## ##### #### # store arb health score for math - exp recalc points needed for current level
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
+######## ##### ####
 
-# health tracker mods
+#####  ###### ###### #### # health tracker mods
 # add health if, xpcount2 is less or = to xpmult if hptrack is less than #max_hp unless player/admin hpmod off
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config unless score @s rpghp.hpmod < #rpghp.hpmod rpghp.config unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players add @s rpghp.hptrack 1
 # add earnt hp if, xpcount2 is less or = to xpmult if hptrack is less than #max_hp - ignores hpmod settings, internal storage
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players add @s rpghp.earnt_hp 1
+#####  ###### ###### ####
 
-# subtract mult from gained exp, if gained exp is greater than needed
+##### ### ### ##### # subtract mult from gained exp, if gained exp is greater than needed
 execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xpcount2 -= @s rpghp.xpmult
+#execute if score @s rpghp.xpcount2 >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xpcount2 -= @s rpghp.xpmult
+##### ### ### #####
 
-# set lowest hp if points to low
+### ##### ### ####### ### # set lowest hp if points to low
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult if score #lowest_hp rpghp.config > @s rpghp.hptrack run scoreboard players operation @s rpghp.hptrack = #lowest_hp rpghp.config
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult if score #lowest_hp rpghp.config > @s rpghp.earnt_hp run scoreboard players operation @s rpghp.earnt_hp = #lowest_hp rpghp.config
+### ##### ### ####### ###
+
+### ### ####
 # TRACK XP store leftover to track for better math keeping
 execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.xptrack = @s rpghp.xpcount2
-
+### ### ####
 
 # check the final scoreboard being set  -  count2 is recalc counter, count is full count
 ###execute if score @s rpghp.xpcount2 > #max_exp rpghp.config run scoreboard players operation @s rpghp.xpcount2 = #max_exp rpghp.config

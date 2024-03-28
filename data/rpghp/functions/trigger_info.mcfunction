@@ -1,6 +1,8 @@
 # trigger_info
 
-
+# redundancy to fix math
+#execute unless score @s rpghp.xp matches 0 run 
+function rpghp:xp_math
 
 tellraw @s {"text":"                                                                                ","color":"dark_gray","strikethrough":true}
 tellraw @s ["                           RPGHealth",{"text":" / ","color":"gray"},"Settings"]
