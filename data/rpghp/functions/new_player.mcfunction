@@ -14,6 +14,7 @@ scoreboard players add @s rpghp.hpmod 0
 scoreboard players set @s rpghp.hpchoose 0
 scoreboard players add @s rpghp.respheal 0
 scoreboard players add @s rpghp.hpch 0
+scoreboard players add @s rpghp.xptrack 0
 ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
 # starting HP
 ##### execute unless score @s rpghp.hptrack matches 1.. run scoreboard players operation @s rpghp.hpset = #start_hp rpghp.config
