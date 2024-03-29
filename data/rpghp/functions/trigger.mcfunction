@@ -14,6 +14,7 @@ execute as @s[scores={rpghp=-4}] run function rpghp:trigger_hpchoose
 execute as @s[scores={rpghp=-5}] run function rpghp:trigger_respheal
 execute as @s[scores={rpghp=-6}] run function rpghp:trigger_global
 
+execute as @s[scores={rpghp=-100}] run function rpghp:xp_math
 
 #execute as @s[scores={rpghp=-6}] run function rpghp:trigger_
 

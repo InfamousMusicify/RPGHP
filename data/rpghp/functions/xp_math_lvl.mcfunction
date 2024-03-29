@@ -30,15 +30,19 @@ execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.co
 # mirror hpch -done in theory -only fire when player is using hpch and looses lowest level of hp -unless admin tgl -unless player toggle
 execute unless score @s rpghp.hptrack matches 1 unless score #lowest_hp rpghp.config >= @s rpghp.hptrack if score @s rpghp.xptrack matches ..-1 if score @s rpghp.earnt_hp < @s rpghp.hpch unless score #rpghp.hpmod rpghp.config matches 1.. run scoreboard players remove @s rpghp.hpch 1
 # earnt hp track -pos and neg  -may need revising
-execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.earnt_hp < #max_hp rpghp.config run scoreboard players add @s rpghp.earnt_hp 1
+#OG# execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.earnt_hp < #max_hp rpghp.config run scoreboard players add @s rpghp.earnt_hp 1
+execute unless score @s rpghp.xptrack <= @s rpghp.xpmult if score @s rpghp.earnt_hp < #max_hp rpghp.config run scoreboard players add @s rpghp.earnt_hp 1
+
+
+# MULT MINUS   -subtract mult from gained exp, if gained exp is greater than needed
+#OG# execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xptrack -= @s rpghp.xpmult
+execute if score @s rpghp.xptrack >= @s rpghp.xpmult unless score @s rpghp.hptrack > #max_hp rpghp.config run scoreboard players operation @s rpghp.xptrack -= @s rpghp.xpmult
 
 # MULT again  -store arb health score for math - exp recalc points needed for current level
 scoreboard players operation @s rpghp.hptrack2 = @s rpghp.hptrack
 execute store result score @s rpghp.xpmult run scoreboard players operation @s rpghp.hptrack2 *= #xpmult rpghp.config
 
-# MULT MINUS   -subtract mult from gained exp, if gained exp is greater than needed
-execute if score @s rpghp.xptrack >= @s rpghp.xpmult if score @s rpghp.hptrack < #max_hp rpghp.config run scoreboard players operation @s rpghp.xptrack -= @s rpghp.xpmult
-
+# old mult minus pos
 
 # MULT MINUS NEG   -finish level revert, subtract neg points from new mult.
 execute unless score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrack matches ..-1 run scoreboard players operation @s rpghp.xptrack += @s rpghp.xpmult
@@ -48,8 +52,9 @@ execute if score #lowest_hp rpghp.config >= @s rpghp.hp if score @s rpghp.xptrac
 # fix negative score -full exp counter
 execute if score @s rpghp.xpcount matches ..-1 run scoreboard players set @s rpghp.xpcount 0
 
-# Store Earnt HP
+# Store Earnt HP  (this might be off for a certain bug which i cant remember rn... something to do with conflicts in other math modes.)
 #OG# execute if score @s rpghp.xpcount2 <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
+execute if score @s rpghp.xptrack <= @s rpghp.xpmult run scoreboard players operation @s rpghp.earnt_hp = @s rpghp.hptrack
 
 
 # HEALTH ARRAY #### ##### ##### ##### ##### ##### ##### ##### ##### 
